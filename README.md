@@ -31,6 +31,8 @@ Directory Brute-forcing
 ``` bash
 gobuster dir -u http://10.150.150.11 -w /usr/share/wordlists/dirb/common.txt -x php
 ```
+![Nmap Scan Results](screenshots/gobuster.png)
+![Nmap Scan Results](screenshots/gobuster2.png)
 Interesting Findings
 /admin/ - Admin panel
 
