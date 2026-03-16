@@ -23,6 +23,18 @@ PORT      STATE SERVICE       VERSION
 1433/tcp  open  ms-sql-s      SQL Server 2012
 3306/tcp  open  mysql         MariaDB 10.4.14
 3389/tcp  open  ms-wbt-server Microsoft Terminal Service
-
+```
 ## 🕵️ Enumeration
 I ran directory brute-forcing on port 80:
+Directory Brute-forcing
+``` bash
+gobuster dir -u http://10.150.150.11 -w /usr/share/wordlists/dirb/common.txt -x php
+```
+Interesting Findings
+/admin/ - Admin panel
+
+/upload/ - File upload directory
+
+/login.php - Login page
+
+/myfiles.php - File manager
