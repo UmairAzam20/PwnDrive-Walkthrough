@@ -23,3 +23,6 @@ PORT      STATE SERVICE       VERSION
 1433/tcp  open  ms-sql-s      SQL Server 2012
 3306/tcp  open  mysql         MariaDB 10.4.14
 3389/tcp  open  ms-wbt-server Microsoft Terminal Service
+
+## 🕵️ Enumeration
+I ran directory brute-forcing on port 80:
