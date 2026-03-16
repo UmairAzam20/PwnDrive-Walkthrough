@@ -13,7 +13,7 @@ Penetration testing walkthrough for PwnDrive machine
 First, I scanned the target to find open ports:
 
 ```bash
-nmap -sV -sC -Pn 10.150.150.11 -oN pwndrive_scan.txt
+nmap -sV -sC -Pn -vv 10.150.150.11 
 
 PORT      STATE SERVICE       VERSION
 21/tcp    open  ftp           Xlight ftpd 3.9
