@@ -24,7 +24,7 @@ PORT      STATE SERVICE       VERSION
 3306/tcp  open  mysql         MariaDB 10.4.14
 3389/tcp  open  ms-wbt-server Microsoft Terminal Service
 ```
-![Nmap Scan Results](screenshots/nmap scan ip address.png)
+![Nmap Scan Results](screenshots/nmap-scan.png)
 ## Phase 2: Enumeration
 I ran directory brute-forcing on port 80:
 Directory Brute-forcing
